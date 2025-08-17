@@ -1,13 +1,6 @@
 # Land Usage Dash App
 
-Una aplicación web interactiva que analiza el uso del suelo para producir diferentes tipos de alimentos.
-
-## Funcionalidades
-
-- 📊 Gráficos de barras interactivos con escalas normal y logarítmica
-- 🌲 Mapa de árbol (treemap) organizando alimentos por categorías
-- 📈 Estadísticas descriptivas del uso del suelo
-- 🎨 Interfaz moderna y responsive
+Interactive web app to analize land usage across different types of food.
 
 ## Despliegue en Render
 
@@ -32,12 +25,12 @@ Una aplicación web interactiva que analiza el uso del suelo para producir difer
 
 ```
 Visualización/
-├── land_usage_dash_app.py    # Aplicación principal
-├── requirements.txt          # Dependencias de Python
-├── render.yaml              # Configuración de Render
-├── README.md                # Este archivo
+├── land_usage_dash_app.py
+├── requirements.txt
+├── render.yaml
+├── README.md
 └── data/
-    └── land-use-kcal-poore.csv  # Dataset principal
+    └── land-use-kcal-poore.csv
 ```
 
 ## Variables de entorno
