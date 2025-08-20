@@ -253,25 +253,14 @@ def render_content(active_tab):
                 "Se puede cambiar entre escala normal y logarítmica usando el botón de abajo."
             ], style={'textAlign': 'center', 'marginBottom': 20, 'fontSize': 14, 'color': '#666'}),
             
-            # Toggle button for scale
+            # Only show the bar chart (no scale toggle)
             html.Div([
-                html.Label("Tipo de Escala:", style={'marginRight': '10px', 'fontWeight': 'bold', 'color': '#2E7D32'}),
-                dcc.RadioItems(
-                    id='scale-toggle',
-                    options=[
-                        {'label': ' Escala Normal', 'value': 'linear'},
-                        {'label': ' Escala Logarítmica', 'value': 'log'}
-                    ],
-                    value='linear',
-                    inline=True,
-                    style={'marginBottom': '20px'},
-                    inputStyle={"margin-right": "5px", "margin-left": "15px"}
+                dcc.Graph(
+                    figure=horizontal_bar,
+                    style={'height': '950px', 'width': '100%'},
+                    config={'displayModeBar': True, 'responsive': True}
                 )
-            ], style={'textAlign': 'center', 'marginBottom': '20px', 
-                     'padding': '15px', 'backgroundColor': '#f8f9fa', 'borderRadius': '8px', 'width': '100%'}),
-            
-            # Graph container
-            html.Div(id='bar-chart-container'),
+            ], style={'width': '100%', 'margin': '0 auto'}),
             
             html.Div([
                 html.H3("🔍 Puntos Clave:", style={'color': '#2E7D32', 'marginBottom': 10}),
@@ -312,34 +301,7 @@ def render_content(active_tab):
             ], style={'marginTop': 30, 'padding': '20px', 'backgroundColor': '#f8f9fa', 'borderRadius': '8px'})
         ])
 
-# Callback for the bar chart scale toggle
-@callback(Output('bar-chart-container', 'children'),
-          Input('scale-toggle', 'value'))
-def update_bar_chart(scale_type):
-    """Update bar chart based on scale selection"""
-    if scale_type == 'log':
-        fig = create_horizontal_bar_chart(df_land, log_scale=True)
-        help_text = html.P([
-            "🔍 Escala Logarítmica: Esta vista permite comparar mejor los alimentos con menor impacto ambiental. ",
-            "Las diferencias que no se veían claramente en la escala normal ahora son más visibles."
-        ], style={'textAlign': 'center', 'marginBottom': 20, 'fontSize': 13, 'color': '#666', 
-                 'fontStyle': 'italic', 'backgroundColor': '#E8F5E8', 'padding': '10px', 'borderRadius': '5px'})
-    else:
-        fig = create_horizontal_bar_chart(df_land, log_scale=False)
-        help_text = html.P([
-            "📏 Escala Normal: Esta vista muestra las proporciones reales entre los diferentes alimentos. ",
-            "Se puede oberservar cómo los productos provenientes de animales dominan completamente la escala."
-        ], style={'textAlign': 'center', 'marginBottom': 20, 'fontSize': 13, 'color': '#666',
-                 'fontStyle': 'italic', 'backgroundColor': '#E3F2FD', 'padding': '10px', 'borderRadius': '5px'})
-    
-    return html.Div([
-        help_text,
-        dcc.Graph(
-            figure=fig,
-            style={'height': '950px', 'width': '100%'},
-            config={'displayModeBar': True, 'responsive': True}
-        )
-    ], style={'width': '100%', 'margin': '0 auto'})
+    # Removed callback for scale toggle and dynamic bar chart
 
 # Run the app
 if __name__ == '__main__':
