@@ -185,7 +185,7 @@ stats_df = create_summary_statistics()
 # Define app layout
 app.layout = html.Div([
     html.Div([
-        html.H1("🌱 Análisis de Uso de Suelo: Impacto Ambiental de los Alimentos", 
+        html.H1("Análisis de Uso de Suelo: Impacto Ambiental de los Alimentos", 
                 style={'textAlign': 'center', 'marginBottom': 30, 'color': '#2E7D32'}),
         
         html.P([
@@ -196,7 +196,7 @@ app.layout = html.Div([
         
         # Summary statistics card
         html.Div([
-            html.H3("📊 Estadísticas Generales", style={'color': '#2E7D32', 'marginBottom': 20}),
+            html.H3("Estadísticas Generales", style={'color': '#2E7D32', 'marginBottom': 20}),
             html.Div([
                 html.Div([
                     html.H4(f"{stats_df.iloc[0, 1]:.1f}", style={'color': '#1976D2', 'margin': 0}),
@@ -230,8 +230,8 @@ app.layout = html.Div([
         
         # Tab system for different charts
         dcc.Tabs(id="tabs", value='tab-1', children=[
-            dcc.Tab(label='📊 Gráfico de Barras', value='tab-1', style={'fontSize': 16}),
-            dcc.Tab(label='🗺️ Mapa de Árbol', value='tab-2', style={'fontSize': 16}),
+            dcc.Tab(label='Gráfico de Barras', value='tab-1', style={'fontSize': 16}),
+            dcc.Tab(label='Mapa de Árbol', value='tab-2', style={'fontSize': 16}),
         ], style={'marginBottom': 30}),
         
         html.Div(id='tabs-content')
@@ -244,7 +244,7 @@ app.layout = html.Div([
 def render_content(active_tab):
     if active_tab == 'tab-1':
         return html.Div([
-            html.H2("📊 Gráfico de Barras", 
+            html.H2("Gráfico de Barras", 
                     style={'textAlign': 'center', 'marginBottom': 20, 'color': '#2E7D32'}),
             
             html.P([
@@ -263,7 +263,7 @@ def render_content(active_tab):
             ], style={'width': '100%', 'margin': '0 auto'}),
             
             html.Div([
-                html.H3("🔍 Puntos Clave:", style={'color': '#2E7D32', 'marginBottom': 10}),
+                html.H3("Puntos Clave:", style={'color': '#2E7D32', 'marginBottom': 10}),
                 html.Ul([
                     html.Li("La carne de res requiere significativamente más suelo que otros alimentos."),
                     html.Li("Los productos animales generalmente requieren más suelo que los vegetales."),
@@ -274,7 +274,7 @@ def render_content(active_tab):
     
     elif active_tab == 'tab-2':
         return html.Div([
-            html.H2("🌲 Treemap", 
+            html.H2("Treemap", 
                     style={'textAlign': 'center', 'marginBottom': 20, 'color': '#2E7D32'}),
             
             html.P([
@@ -291,7 +291,7 @@ def render_content(active_tab):
             ], style={'width': '100%', 'margin': '0 auto'}),
             
             html.Div([
-                html.H3("🎯 Interpretación:", style={'color': '#2E7D32', 'marginBottom': 10}),
+                html.H3("Interpretación:", style={'color': '#2E7D32', 'marginBottom': 10}),
                 html.Ul([
                     html.Li("Los rectángulos más grandes representan mayor uso de suelo por 1000kcal."),
                     html.Li("La categoría 'Meat' (Carnes) domina visualmente el espacio disponible."),
